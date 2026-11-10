@@ -1,0 +1,263 @@
+#!/usr/bin/env node
+/**
+ * Build the private project gallery.
+ *
+ * Reads photos from gallery-src/ (gitignored), embeds them in one HTML page,
+ * and encrypts that page with StatiCrypt. The password comes from
+ * GALLERY_PASSWORD and is never written to the repo.
+ *
+ *   GALLERY_PASSWORD='your long password' ./scripts/build-gallery
+ */
+
+"use strict";
+
+const fs = require("fs");
+const os = require("os");
+const path = require("path");
+const { spawnSync } = require("child_process");
+
+const repoRoot = path.resolve(__dirname, "..");
+const sourceDir = path.join(repoRoot, "gallery-src");
+const outputFile = path.join(repoRoot, "gallery", "index.html");
+const templateFile = path.join(repoRoot, "scripts", "password_template.html");
+const staticryptBin = path.join(repoRoot, "node_modules", ".bin", "staticrypt");
+
+const IMAGE_EXTENSIONS = new Set([".jpg", ".jpeg", ".png", ".webp", ".gif"]);
+const MIME_TYPES = {
+    ".jpg": "image/jpeg",
+    ".jpeg": "image/jpeg",
+    ".png": "image/png",
+    ".webp": "image/webp",
+    ".gif": "image/gif",
+};
+
+function fail(message) {
+    console.error(message);
+    process.exit(1);
+}
+
+function escapeHtml(value) {
+    return value.replace(/[&<>"']/g, (character) => {
+        return {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;",
+        }[character];
+    });
+}
+
+function captionFromFilename(filename) {
+    const base = path.basename(filename, path.extname(filename));
+    const withoutIndex = base.replace(/^\d+[-_\s]+/, "");
+    const words = withoutIndex.split(/[-_]+/).filter(Boolean);
+    const titled = words.map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase());
+
+    if (titled[0] && titled[0].toLowerCase() === "sample") {
+        const rest = titled.slice(1).join(" ");
+        return rest ? `Sample — ${rest}` : "Sample";
+    }
+
+    return titled.join(" ");
+}
+
+function galleryMarkup(photos) {
+    const figures = photos
+        .map((photo) => {
+            const caption = escapeHtml(photo.caption);
+            return `        <figure>
+            <img src="data:${photo.mime};base64,${photo.base64}" alt="${caption}" />
+            <figcaption>${caption}</figcaption>
+        </figure>`;
+        })
+        .join("\n");
+
+    return `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Project Gallery — Gradient Signs</title>
+    <style>
+        :root { color-scheme: dark; }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            color: #f4f1ff;
+            font-family: Inter, "Segoe UI", system-ui, sans-serif;
+            background:
+                radial-gradient(900px 520px at 12% -10%, rgba(65, 105, 225, 0.45), transparent 58%),
+                radial-gradient(720px 480px at 110% 0%, rgba(124, 58, 237, 0.38), transparent 55%),
+                #07060d;
+        }
+        .wrap { max-width: 1080px; margin: 0 auto; padding: 32px 20px 64px; }
+        header { text-align: center; margin-bottom: 28px; }
+        .logo { height: 84px; width: auto; }
+        .eyebrow {
+            display: inline-block;
+            margin: 18px 0 8px;
+            color: #c4b5fd;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        h1 { margin: 0 0 8px; font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: -0.03em; }
+        .lead { margin: 0 auto; max-width: 38rem; color: #ddd6fe; line-height: 1.5; }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px;
+            margin-top: 32px;
+        }
+        figure {
+            margin: 0;
+            background: #120e1c;
+            border: 1px solid rgba(124, 58, 237, 0.45);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        img { display: block; width: 100%; height: auto; background: #07060d; }
+        figcaption { padding: 12px 14px 14px; color: #e9e4ff; font-size: 0.95rem; }
+        footer { margin-top: 28px; text-align: center; }
+        footer a { color: #a5b4fc; text-decoration: none; }
+        footer a:hover { color: #ffffff; }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <a href="../"><img class="logo" src="../assets/logo.svg" alt="Gradient Signs" width="1200" height="729" /></a>
+            <p class="eyebrow">Private</p>
+            <h1>Project Gallery</h1>
+            <p class="lead">Install photos for national accounts and clients.</p>
+        </header>
+        <main class="grid">
+${figures}
+        </main>
+        <footer>
+            <a href="../">Back to Gradient Signs</a>
+        </footer>
+    </div>
+</body>
+</html>
+`;
+}
+
+function loadPhotos() {
+    if (!fs.existsSync(sourceDir)) {
+        fail("gallery-src/ does not exist. Create it and add photos, then run this script again.");
+    }
+
+    const filenames = fs
+        .readdirSync(sourceDir)
+        .filter((name) => IMAGE_EXTENSIONS.has(path.extname(name).toLowerCase()))
+        .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+
+    if (filenames.length === 0) {
+        fail("No photos in gallery-src/. Add JPEG, PNG, WebP, or GIF files. That folder is not committed.");
+    }
+
+    return filenames.map((filename) => {
+        const extension = path.extname(filename).toLowerCase();
+        const bytes = fs.readFileSync(path.join(sourceDir, filename));
+        return {
+            caption: captionFromFilename(filename),
+            mime: MIME_TYPES[extension],
+            base64: bytes.toString("base64"),
+        };
+    });
+}
+
+function assertEncrypted(filePath, captions) {
+    const output = fs.readFileSync(filePath, "utf8");
+    // The password page embeds two small eye icons. Photo payloads use data:image/jpeg (and png/webp/gif).
+    const markers = ["data:image/jpeg", "data:image/png", "data:image/webp", "data:image/gif", ...captions];
+    const leaked = markers.filter((marker) => output.includes(marker));
+
+    if (leaked.length > 0) {
+        fs.rmSync(filePath, { force: true });
+        fail("Refusing to leave output in place: encrypted gallery still contains plaintext gallery content.");
+    }
+
+    if (!output.includes("staticryptEncryptedMsgUniqueVariableName")) {
+        fail("StatiCrypt did not write an encrypted payload.");
+    }
+}
+
+function main() {
+    const password = process.env.GALLERY_PASSWORD;
+    if (!password) {
+        fail("Set GALLERY_PASSWORD in the environment. The password is not stored in the repo.");
+    }
+    if (password.length < 14) {
+        fail("GALLERY_PASSWORD must be at least 14 characters.");
+    }
+    if (!fs.existsSync(staticryptBin)) {
+        fail("staticrypt is not installed. From the repo root, run: npm install");
+    }
+    if (!fs.existsSync(templateFile)) {
+        fail("Missing scripts/password_template.html.");
+    }
+
+    const photos = loadPhotos();
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "gs-gallery-"));
+    const plainPath = path.join(tempDir, "index.html");
+
+    try {
+        fs.writeFileSync(plainPath, galleryMarkup(photos), { mode: 0o600 });
+
+        const result = spawnSync(
+            staticryptBin,
+            [
+                plainPath,
+                "--directory",
+                "gallery",
+                "--template",
+                templateFile,
+                "--template-title",
+                "Project Gallery",
+                "--template-instructions",
+                "For national accounts and clients. The photos stay encrypted until you enter the password.",
+                "--template-button",
+                "Unlock gallery",
+                "--template-placeholder",
+                "Password",
+                "--template-remember",
+                "Remember me on this browser",
+                "--template-error",
+                "Wrong password. Try again.",
+                "--template-color-primary",
+                "#4169E1",
+                "--template-color-secondary",
+                "#07060d",
+                "--remember",
+                "30",
+                "--config",
+                ".staticrypt.json",
+            ],
+            {
+                cwd: repoRoot,
+                env: { ...process.env, STATICRYPT_PASSWORD: password },
+                stdio: "inherit",
+            }
+        );
+
+        if (result.status !== 0) {
+            fail("StatiCrypt failed. gallery/index.html was not updated.");
+        }
+
+        assertEncrypted(
+            outputFile,
+            photos.map((photo) => photo.caption)
+        );
+        console.log(`Encrypted ${photos.length} photo${photos.length === 1 ? "" : "s"} into gallery/index.html.`);
+    } finally {
+        fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+}
+
+main();
