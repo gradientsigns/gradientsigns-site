@@ -1,0 +1,11 @@
+{
+  "name": "gradientsigns-site",
+  "private": true,
+  "description": "Gradient Signs landing page and encrypted project gallery",
+  "scripts": {
+    "build:gallery": "./scripts/build-gallery"
+  },
+  "dependencies": {
+    "staticrypt": "3.5.4"
+  }
+}
