@@ -29,13 +29,13 @@
       <h1>Tell us about the job</h1>
       <p class="lede">Name, site, and what you need is enough to start. Store number, PO, permit status, due date, and a drawings link are optional.</p>
 
-      <!-- FORM_EMBED_URL: paste the Google Form embed URL into the constant below.
-           Example: https://docs.google.com/forms/d/e/FORM_ID/viewform?embedded=true -->
+      <!-- FORM_EMBED_URL: the Google Form embed src. Replace this constant to swap the form. -->
       <div class="form-embed">
         <iframe id="form-embed" title="Work request form" hidden></iframe>
         <p class="form-embed-note" id="form-embed-note">The request form will appear here once the Google Form link is added.</p>
       </div>
 
+      <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSfzRUVpTJyUKyp2ZN-iAsfBZ3yGowqMd2wZU4DDuRKO9fN91Q/viewform" target="_blank" rel="noopener">Open the form in a new tab</a></p>
       <p><a class="btn" id="email-request" href="mailto:Gradientsigns@gmail.com">Email your request</a></p>
       <p class="hint">The email opens with the fields listed, including store or site number, PO, permit status, due date, and drawings link.</p>
     </div>
@@ -49,8 +49,8 @@
   </footer>
 
   <script>
-    // FORM_EMBED_URL — replace the empty string with the Google Form embed URL.
-    const FORM_EMBED_URL = "";
+    // FORM_EMBED_URL — replace this URL to swap the embedded Google Form.
+    const FORM_EMBED_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfzRUVpTJyUKyp2ZN-iAsfBZ3yGowqMd2wZU4DDuRKO9fN91Q/viewform?embedded=true";
 
     const frame = document.getElementById("form-embed");
     const note = document.getElementById("form-embed-note");

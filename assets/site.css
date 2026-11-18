@@ -238,7 +238,7 @@ input:focus, select:focus, textarea:focus { outline: 2px solid rgba(65, 105, 225
 .form-embed iframe {
   display: block;
   width: 100%;
-  min-height: 72vh;
+  height: 2627px;
   border: 0;
   background: #fff;
 }
@@ -345,6 +345,7 @@ dialog.lightbox .close {
   .page { padding: 3rem 0 3.5rem; }
   .hero { min-height: 0; align-items: flex-start; padding: 3rem 0 2.75rem; }
   .split, .row { grid-template-columns: 1fr; }
+  .form-embed iframe { height: 3400px; }
   .site-footer { flex-direction: column; align-items: flex-start; }
 }
 

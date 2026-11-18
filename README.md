@@ -15,15 +15,7 @@ GitHub Pages + custom domain (gradientsigns.com)
 
 ## Request form
 
-The request page is a slot for a Google Form that lives in Marty’s Google Drive. The form is not embedded yet.
-
-1. In the Google Form, choose Send → embed, and copy the `src` URL from the iframe.
-2. Open `request.html` and set `FORM_EMBED_URL` to that URL. It is the empty string near the bottom of the page, marked `FORM_EMBED_URL`.
-3. Commit the change. The iframe then fills the outlined box on the page.
-
-Until that URL is set, the page shows a short note and a button that opens an email to Gradientsigns@gmail.com with the fields already listed, including store or site number, PO, permit status, due date, and drawings link.
-
-Switching the form later is the same step: replace `FORM_EMBED_URL`. No form service account is wired into the site.
+The request page embeds the Google Form from Marty’s Drive. `FORM_EMBED_URL` in `request.html` is that embed address. To swap the form, replace that constant. The page also has an email button that opens a message to Gradientsigns@gmail.com with the fields listed, including store or site number, PO, permit status, due date, and drawings link.
 
 ## Private project gallery
 
