@@ -26,7 +26,7 @@
   <meta name="twitter:image:alt" content="Gradient Signs" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg: #080808;
@@ -57,10 +57,11 @@
     img { max-width: 100%; display: block; }
     a { color: inherit; }
     h1, h2, h3 {
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-weight: 500;
-      letter-spacing: -0.02em;
-      line-height: 0.96;
+      font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 0.88;
+      text-transform: uppercase;
     }
 
     .nav {
@@ -84,18 +85,50 @@
     }
 
     .nav-links a {
-      font-size: 0.68rem;
-      letter-spacing: 0.18em;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       text-decoration: none;
       color: var(--muted);
     }
 
-    .nav-links a:hover { color: var(--ink); }
+    .nav-links a[href="gallery/"] {
+      color: var(--ink);
+      border: 1px solid rgba(244, 240, 232, 0.45);
+      padding: 0.55rem 0.8rem;
+    }
+
+    .nav-links a:hover,
+    .nav-links a[href="gallery/"]:hover { color: #fff; border-color: var(--blue); }
 
     .wrap { max-width: 1120px; margin: 0 auto; padding: 0 1.5rem; }
 
-    .hero { padding: 6.25rem 0 5rem; }
+    .hero {
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      min-height: calc(100svh - 5.5rem);
+      padding: 7rem 0 4.5rem;
+      isolation: isolate;
+    }
+
+    .hero-media,
+    .hero-shade {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-media {
+      z-index: -2;
+      background: #111 url("assets/hero-bg.jpg") center / cover no-repeat;
+    }
+
+    .hero-shade {
+      z-index: -1;
+      background:
+        linear-gradient(180deg, rgba(8, 8, 8, 0.62) 0%, rgba(8, 8, 8, 0.78) 48%, rgba(8, 8, 8, 0.92) 100%);
+    }
 
     .eyebrow {
       margin: 0 0 1.6rem;
@@ -106,9 +139,9 @@
     }
 
     h1 {
-      margin: 0 0 1.6rem;
-      max-width: 12ch;
-      font-size: clamp(3.4rem, 7.4vw, 6.6rem);
+      margin: 0 0 1.25rem;
+      max-width: 16ch;
+      font-size: clamp(3.6rem, 7.2vw, 6.5rem);
     }
 
     .lede {
@@ -117,55 +150,21 @@
       color: var(--muted);
     }
 
-    .text-link {
-      display: inline-block;
-      padding-bottom: 0.2rem;
-      border-bottom: 1px solid var(--ink);
-      font-size: 0.72rem;
-      font-weight: 400;
-      letter-spacing: 0.2em;
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 1.45rem;
+      background: var(--blue);
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       text-decoration: none;
     }
 
-    .text-link:hover { color: var(--blue); border-color: var(--blue); }
-
-    .frames {
-      display: grid;
-      grid-template-columns: 1.4fr 0.95fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 1.35rem 1.15rem;
-      min-height: 720px;
-      margin-top: 5rem;
-      padding-top: 2.5rem;
-      border-top: 1px solid var(--line);
-    }
-
-    .frames figure {
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      min-height: 0;
-    }
-
-    .frames .lead { grid-row: 1 / span 2; }
-
-    .frames img {
-      width: 100%;
-      height: 100%;
-      flex: 1;
-      min-height: 0;
-      object-fit: cover;
-      background: #111;
-    }
-
-    figcaption {
-      margin-top: 0.7rem;
-      font-size: 0.66rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
+    .btn:hover { background: #3154c4; }
 
     .band { border-top: 1px solid var(--line); padding: 5.75rem 0; }
 
@@ -186,14 +185,14 @@
     .principles article:nth-child(2) .kicker { color: var(--purple); }
     .principles article:nth-child(3) .kicker { color: var(--muted); }
 
-    h3 { margin: 0 0 0.85rem; font-size: 2.15rem; }
+    h3 { margin: 0 0 0.7rem; font-size: clamp(1.8rem, 3vw, 2.35rem); }
 
     .principles p, .serve p { margin: 0; color: var(--muted); font-size: 0.98rem; }
 
     .serve-intro { max-width: 34rem; margin-bottom: 3rem; }
     .serve-intro p { color: var(--muted); }
 
-    h2 { margin: 0 0 1rem; font-size: clamp(2.8rem, 5vw, 4.4rem); }
+    h2 { margin: 0 0 0.85rem; font-size: clamp(3rem, 6vw, 4.8rem); }
 
     .serve {
       display: grid;
@@ -208,7 +207,8 @@
       overflow: hidden;
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
-      padding: 1.15rem 0;
+      padding: 1.35rem 0;
+      background: #0c0c0c;
     }
 
     .ribbon-track {
@@ -219,11 +219,12 @@
 
     .ribbon p {
       margin: 0;
-      font-size: 0.68rem;
-      font-weight: 400;
-      letter-spacing: 0.24em;
+      font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: #b7b1a8;
+      color: #efeae2;
       white-space: nowrap;
     }
 
@@ -232,7 +233,7 @@
     .ribbon .sep {
       display: inline-block;
       padding: 0 1.15rem;
-      color: rgba(65, 105, 225, 0.8);
+      color: var(--purple);
       letter-spacing: 0;
     }
 
@@ -246,13 +247,13 @@
       text-align: center;
     }
 
-    .contact h2 { font-size: clamp(3.2rem, 6vw, 5.2rem); }
+    .contact h2 { font-size: clamp(3.4rem, 7vw, 5.6rem); }
     .contact .lede { margin-left: auto; margin-right: auto; }
 
     .mail {
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: clamp(1.7rem, 3vw, 2.35rem);
-      font-style: italic;
+      font-size: 1.15rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
       text-decoration: none;
       border-bottom: 1px solid var(--line);
     }
@@ -285,16 +286,10 @@
       .nav { padding: 1rem 1.15rem; }
       .nav img { height: 40px; }
       .nav-links a { letter-spacing: 0.12em; font-size: 0.62rem; }
-      .hero { padding: 3.4rem 0 3rem; }
-      .frames {
-        grid-template-columns: 1fr;
-        grid-template-rows: none;
-        min-height: 0;
-        gap: 1.5rem;
-        margin-top: 3.25rem;
-      }
-      .frames .lead { grid-row: auto; }
-      .frames img { flex: none; height: auto; aspect-ratio: 16 / 10; }
+      .hero { min-height: 0; align-items: flex-start; padding: 3.1rem 0 2.75rem; }
+      .eyebrow { margin-bottom: 1rem; }
+      .lede { margin-bottom: 1.6rem; }
+      h1 { font-size: clamp(3rem, 13.2vw, 4rem); max-width: 12ch; }
       .principles, .serve { grid-template-columns: 1fr; gap: 2.4rem; }
       .serve article, .serve article + article {
         border-left: 0;
@@ -336,6 +331,9 @@
 
   <main>
     <section class="hero">
+      <!-- Hero background: replace assets/hero-bg.jpg -->
+      <div class="hero-media" role="img" aria-label="Placeholder for a hero photograph"></div>
+      <div class="hero-shade" aria-hidden="true"></div>
       <div class="wrap">
         <p class="eyebrow">New York Area · National Account Ready</p>
         <h1>A reliable local partner for national sign programs</h1>
@@ -343,23 +341,7 @@
           Gradient Signs works with national accounts that need consistent branding,
           clean execution, and a team that already understands program standards in the New York market.
         </p>
-        <a class="text-link" href="#contact">Start a Conversation</a>
-
-        <!-- Work photos: replace the files in assets/work/. -->
-        <div class="frames" aria-label="Work photo spots">
-          <figure class="lead">
-            <img src="assets/work/placeholder-storefront.jpg" alt="Placeholder for a storefront photo" width="800" height="1000" />
-            <figcaption>Storefront</figcaption>
-          </figure>
-          <figure>
-            <img src="assets/work/placeholder-monument.jpg" alt="Placeholder for a monument photo" width="800" height="600" />
-            <figcaption>Monument</figcaption>
-          </figure>
-          <figure>
-            <img src="assets/work/placeholder-letters.jpg" alt="Placeholder for a channel-letter photo" width="800" height="600" />
-            <figcaption>Channel letters</figcaption>
-          </figure>
-        </div>
+        <a class="btn" href="#contact">Start a Conversation</a>
       </div>
     </section>
 
