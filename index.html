@@ -10,374 +10,438 @@
   <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="preload" as="image" href="assets/logo.svg" type="image/svg+xml" />
-  <meta name="theme-color" content="#020617" />
+  <meta name="theme-color" content="#080808" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://gradientsigns.github.io/gradientsigns-site/" />
+  <meta property="og:url" content="https://gradientsigns.com/" />
   <meta property="og:title" content="Gradient Signs — National Account Signage Partner | New York" />
   <meta property="og:description" content="Gradient Signs partners with national sign programs in the New York area. Consistent branding, reliable execution, and local knowledge for programs like Stratus, Pattison ID, and others." />
-  <meta property="og:image" content="https://gradientsigns.github.io/gradientsigns-site/assets/og.png" />
+  <meta property="og:image" content="https://gradientsigns.com/assets/og.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Gradient Signs" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Gradient Signs — National Account Signage Partner | New York" />
   <meta name="twitter:description" content="Gradient Signs partners with national sign programs in the New York area. Consistent branding, reliable execution, and local knowledge for programs like Stratus, Pattison ID, and others." />
-  <meta name="twitter:image" content="https://gradientsigns.github.io/gradientsigns-site/assets/og.png" />
+  <meta name="twitter:image" content="https://gradientsigns.com/assets/og.png" />
   <meta name="twitter:image:alt" content="Gradient Signs" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              400: '#38bdf8',
-              500: '#0ea5e9',
-              600: '#0284c7',
-              700: '#0369a1',
-            }
-          }
-        }
-      }
-    }
-  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-    body { font-family: 'Inter', system-ui, sans-serif; }
-
-    .hero-stage { overflow: hidden; }
-
-    .work-showcase {
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      gap: 0.7rem;
-      margin: 2.25rem auto 0;
-      max-width: 28rem;
-      pointer-events: none;
+    :root {
+      --bg: #080808;
+      --ink: #f4f0e8;
+      --muted: #a39c93;
+      --line: rgba(244, 240, 232, 0.14);
+      --blue: #4169e1;
+      --purple: #7a6cff;
     }
 
-    .work-showcase figure {
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
       margin: 0;
-      width: 31%;
-      border-radius: 1rem;
-      overflow: hidden;
-      background: #0b0912;
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
-      transform: rotate(var(--tilt, 0deg));
-    }
-
-    .work-showcase figure:nth-child(1) {
-      --tilt: -7deg;
-      border: 1px solid rgba(65, 105, 225, 0.7);
-    }
-
-    .work-showcase figure:nth-child(2) {
-      --tilt: 4deg;
-      margin-bottom: 0.85rem;
-      border: 1px solid rgba(124, 58, 237, 0.75);
-    }
-
-    .work-showcase figure:nth-child(3) {
-      --tilt: -3deg;
-      border: 1px solid rgba(127, 29, 45, 0.85);
-    }
-
-    .work-showcase img {
-      display: block;
-      width: 100%;
-      height: auto;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-    }
-
-    @media (min-width: 1180px) {
-      .work-showcase {
-        position: absolute;
-        inset: 0;
-        max-width: none;
-        margin: 0;
-      }
-
-      .work-showcase figure {
-        position: absolute;
-        width: 13.5rem;
-      }
-
-      .work-showcase figure:nth-child(1) {
-        left: max(1rem, calc(50% - 39rem));
-        top: 18%;
-      }
-
-      .work-showcase figure:nth-child(2) {
-        right: max(1rem, calc(50% - 40rem));
-        top: 10%;
-        margin-bottom: 0;
-        width: 11.5rem;
-      }
-
-      .work-showcase figure:nth-child(3) {
-        right: max(2.5rem, calc(50% - 36rem));
-        bottom: 8%;
-        width: 15rem;
-      }
-    }
-
-    .work-ribbon {
-      position: relative;
-      overflow: hidden;
       background:
-        linear-gradient(90deg, rgba(65, 105, 225, 0.22), rgba(88, 28, 135, 0.16) 48%, rgba(127, 29, 45, 0.22)),
-        #05040a;
-      border-block: 1px solid rgba(255, 255, 255, 0.06);
-      padding: 1.05rem 0;
-      -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
-      mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+        radial-gradient(880px 420px at 100% -8%, rgba(65, 105, 225, 0.09), transparent 58%),
+        radial-gradient(640px 360px at -8% 18%, rgba(90, 70, 180, 0.07), transparent 55%),
+        var(--bg);
+      color: var(--ink);
+      font-family: Outfit, "Segoe UI", sans-serif;
+      font-weight: 300;
+      font-size: 1.05rem;
+      line-height: 1.7;
     }
 
-    .work-ribbon-track {
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    h1, h2, h3 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 0.96;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem 1.75rem;
+      flex-wrap: wrap;
+      padding: 1.35rem 2.5rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav img { height: 48px; width: auto; }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 0.85rem 1.6rem;
+      margin-left: auto;
+    }
+
+    .nav-links a {
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 1.5rem; }
+
+    .hero { padding: 6.25rem 0 5rem; }
+
+    .eyebrow {
+      margin: 0 0 1.6rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    h1 {
+      margin: 0 0 1.6rem;
+      max-width: 12ch;
+      font-size: clamp(3.4rem, 7.4vw, 6.6rem);
+    }
+
+    .lede {
+      max-width: 34rem;
+      margin: 0 0 2.4rem;
+      color: var(--muted);
+    }
+
+    .text-link {
+      display: inline-block;
+      padding-bottom: 0.2rem;
+      border-bottom: 1px solid var(--ink);
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    .text-link:hover { color: var(--blue); border-color: var(--blue); }
+
+    .frames {
+      display: grid;
+      grid-template-columns: 1.4fr 0.95fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 1.35rem 1.15rem;
+      min-height: 720px;
+      margin-top: 5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .frames figure {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .frames .lead { grid-row: 1 / span 2; }
+
+    .frames img {
+      width: 100%;
+      height: 100%;
+      flex: 1;
+      min-height: 0;
+      object-fit: cover;
+      background: #111;
+    }
+
+    figcaption {
+      margin-top: 0.7rem;
+      font-size: 0.66rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .band { border-top: 1px solid var(--line); padding: 5.75rem 0; }
+
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3.5rem;
+    }
+
+    .kicker {
+      margin-bottom: 0.9rem;
+      font-size: 0.66rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+
+    .principles article:nth-child(2) .kicker { color: var(--purple); }
+    .principles article:nth-child(3) .kicker { color: var(--muted); }
+
+    h3 { margin: 0 0 0.85rem; font-size: 2.15rem; }
+
+    .principles p, .serve p { margin: 0; color: var(--muted); font-size: 0.98rem; }
+
+    .serve-intro { max-width: 34rem; margin-bottom: 3rem; }
+    .serve-intro p { color: var(--muted); }
+
+    h2 { margin: 0 0 1rem; font-size: clamp(2.8rem, 5vw, 4.4rem); }
+
+    .serve {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid var(--line);
+    }
+
+    .serve article { padding: 2rem 2.25rem 0.25rem 0; }
+    .serve article + article { border-left: 1px solid var(--line); padding-left: 2.25rem; }
+
+    .ribbon {
+      overflow: hidden;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 1.15rem 0;
+    }
+
+    .ribbon-track {
       display: flex;
       width: max-content;
-      animation: ribbon-scroll 46s linear infinite;
+      animation: ribbon 96s linear infinite;
     }
 
-    .work-ribbon:hover .work-ribbon-track,
-    .work-ribbon:focus-within .work-ribbon-track {
-      animation-play-state: paused;
-    }
-
-    .work-ribbon ul {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
+    .ribbon p {
       margin: 0;
-      padding: 0 0.375rem;
-      list-style: none;
-    }
-
-    .work-ribbon li {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      padding: 0.55rem 0.95rem;
-      border-radius: 999px;
-      border: 1px solid rgba(65, 105, 225, 0.65);
-      background: #0c0a12;
-      color: #f5f3ff;
-      font-size: 0.92rem;
-      font-weight: 600;
-      letter-spacing: 0.01em;
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: #b7b1a8;
       white-space: nowrap;
     }
 
-    .work-ribbon li:nth-child(3n + 2) { border-color: rgba(124, 58, 237, 0.75); }
-    .work-ribbon li:nth-child(3n) { border-color: rgba(127, 29, 45, 0.9); }
+    .ribbon .item { display: inline-block; }
 
-    .ribbon-icon {
-      display: inline-flex;
-      color: #4169e1;
+    .ribbon .sep {
+      display: inline-block;
+      padding: 0 1.15rem;
+      color: rgba(65, 105, 225, 0.8);
+      letter-spacing: 0;
     }
 
-    .work-ribbon li:nth-child(3n + 2) .ribbon-icon { color: #7c3aed; }
-    .work-ribbon li:nth-child(3n) .ribbon-icon { color: #9f1239; }
-
-    .ribbon-icon svg {
-      width: 1.05rem;
-      height: 1.05rem;
-      display: block;
-    }
-
-    @keyframes ribbon-scroll {
+    @keyframes ribbon {
       from { transform: translateX(0); }
       to { transform: translateX(-50%); }
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      .work-ribbon {
-        -webkit-mask-image: none;
-        mask-image: none;
-        padding: 1.25rem 1rem 1.4rem;
-      }
+    .contact {
+      padding: 6.5rem 1.5rem 6rem;
+      text-align: center;
+    }
 
-      .work-ribbon-track {
+    .contact h2 { font-size: clamp(3.2rem, 6vw, 5.2rem); }
+    .contact .lede { margin-left: auto; margin-right: auto; }
+
+    .mail {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(1.7rem, 3vw, 2.35rem);
+      font-style: italic;
+      text-decoration: none;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .mail:hover { border-color: var(--blue); }
+
+    .fine {
+      margin: 1.6rem 0 0;
+      font-size: 0.66rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.4rem 2.5rem 1.8rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+    }
+
+    footer img { height: 34px; width: auto; }
+
+    @media (max-width: 860px) {
+      .nav { padding: 1rem 1.15rem; }
+      .nav img { height: 40px; }
+      .nav-links a { letter-spacing: 0.12em; font-size: 0.62rem; }
+      .hero { padding: 3.4rem 0 3rem; }
+      .frames {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+        min-height: 0;
+        gap: 1.5rem;
+        margin-top: 3.25rem;
+      }
+      .frames .lead { grid-row: auto; }
+      .frames img { flex: none; height: auto; aspect-ratio: 16 / 10; }
+      .principles, .serve { grid-template-columns: 1fr; gap: 2.4rem; }
+      .serve article, .serve article + article {
+        border-left: 0;
+        padding-left: 0;
+        padding-right: 0;
+      }
+      .serve article + article { border-top: 1px solid var(--line); padding-top: 2rem; }
+      .band { padding: 3.5rem 0; }
+      footer { flex-direction: column; text-align: center; padding: 1.5rem 1.15rem 2rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .ribbon-track {
         animation: none;
-        width: 100%;
-        max-width: 64rem;
+        width: auto;
+        max-width: 68rem;
         margin: 0 auto;
         justify-content: center;
       }
-
-      .work-ribbon ul[aria-hidden="true"] { display: none; }
-
-      .work-ribbon ul {
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 0;
+      .ribbon p[aria-hidden="true"] { display: none; }
+      .ribbon p {
+        white-space: normal;
+        text-align: center;
+        line-height: 2.4;
+        padding: 0 1.25rem;
       }
     }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 antialiased">
+<body>
+  <header class="nav">
+    <img src="assets/logo.svg" alt="Gradient Signs" width="1200" height="729" />
+    <nav class="nav-links" aria-label="Primary">
+      <a href="gallery/">Project Gallery (private)</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-  <!-- Nav -->
-  <nav class="border-b border-slate-800">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
-      <img src="assets/logo.svg" alt="Gradient Signs" width="1200" height="729" class="block h-auto w-[7.5rem] max-w-[70%] sm:w-40 sm:max-w-none" />
-      <div class="flex flex-wrap items-center justify-end gap-x-4 gap-y-1 ml-auto">
-        <a href="gallery/" class="text-sm text-slate-400 hover:text-white transition whitespace-nowrap">Project Gallery (private)</a>
-        <a href="#contact" class="text-sm text-slate-400 hover:text-white transition">Contact</a>
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">New York Area · National Account Ready</p>
+        <h1>A reliable local partner for national sign programs</h1>
+        <p class="lede">
+          Gradient Signs works with national accounts that need consistent branding,
+          clean execution, and a team that already understands program standards in the New York market.
+        </p>
+        <a class="text-link" href="#contact">Start a Conversation</a>
+
+        <!-- Work photos: replace the files in assets/work/. -->
+        <div class="frames" aria-label="Work photo spots">
+          <figure class="lead">
+            <img src="assets/work/placeholder-storefront.jpg" alt="Placeholder for a storefront photo" width="800" height="1000" />
+            <figcaption>Storefront</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/work/placeholder-monument.jpg" alt="Placeholder for a monument photo" width="800" height="600" />
+            <figcaption>Monument</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/work/placeholder-letters.jpg" alt="Placeholder for a channel-letter photo" width="800" height="600" />
+            <figcaption>Channel letters</figcaption>
+          </figure>
+        </div>
       </div>
-    </div>
-  </nav>
+    </section>
 
-  <!-- Hero -->
-  <section class="hero-stage relative flex flex-col pt-16 pb-10 sm:pt-20 sm:pb-16">
-    <!-- Work photos: replace the files in assets/work/. -->
-    <div class="work-showcase order-2" aria-label="Work photo spots">
-      <figure>
-        <img src="assets/work/placeholder-storefront.jpg" alt="Placeholder for a storefront photo" width="800" height="600" />
-      </figure>
-      <figure>
-        <img src="assets/work/placeholder-monument.jpg" alt="Placeholder for a monument photo" width="800" height="600" />
-      </figure>
-      <figure>
-        <img src="assets/work/placeholder-letters.jpg" alt="Placeholder for a channel-letter photo" width="800" height="600" />
-      </figure>
-    </div>
-    <div class="order-1 max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10">
-    <div class="inline-flex items-center gap-2 bg-slate-900 border border-slate-800 text-brand-400 text-sm font-medium px-4 py-1.5 rounded-full mb-8">
-      New York Area · National Account Ready
-    </div>
-    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight mb-6">
-      A reliable local partner<br class="hidden sm:block" />
-      for national sign programs
-    </h1>
-    <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-      Gradient Signs works with national accounts that need consistent branding, 
-      clean execution, and a team that already understands program standards in the New York market.
-    </p>
-    <a href="#contact" 
-       class="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-500 text-white font-semibold px-8 py-3.5 rounded-xl transition shadow-lg shadow-brand-900/30">
-      Start a Conversation
-    </a>
-    </div>
-  </section>
-
-  <!-- Positioning -->
-  <section class="border-t border-slate-800 bg-slate-900/40">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-20">
-      <div class="grid md:grid-cols-3 gap-10">
-        <div>
-          <div class="text-brand-500 font-semibold text-sm mb-2">STANDARDS</div>
-          <h3 class="text-xl font-bold text-white mb-3">We already speak the language</h3>
-          <p class="text-slate-400 leading-relaxed">
-            National programs have specific brand guidelines, approval flows, and quality expectations. 
+    <section class="band">
+      <div class="wrap principles">
+        <article>
+          <div class="kicker">Standards</div>
+          <h3>We already speak the language</h3>
+          <p>
+            National programs have specific brand guidelines, approval flows, and quality expectations.
             We work within those systems instead of fighting them.
           </p>
-        </div>
-        <div>
-          <div class="text-brand-500 font-semibold text-sm mb-2">EXECUTION</div>
-          <h3 class="text-xl font-bold text-white mb-3">Consistent, on-time, on-brand</h3>
-          <p class="text-slate-400 leading-relaxed">
-            From fabrication through install, we focus on clean results that protect the brand 
+        </article>
+        <article>
+          <div class="kicker">Execution</div>
+          <h3>Consistent, on-time, on-brand</h3>
+          <p>
+            From fabrication through install, we focus on clean results that protect the brand
             and keep program managers confident.
           </p>
-        </div>
-        <div>
-          <div class="text-brand-500 font-semibold text-sm mb-2">LOCAL</div>
-          <h3 class="text-xl font-bold text-white mb-3">New York market knowledge</h3>
-          <p class="text-slate-400 leading-relaxed">
-            Permitting, building access, union considerations, and site realities in the NY metro area 
+        </article>
+        <article>
+          <div class="kicker">Local</div>
+          <h3>New York market knowledge</h3>
+          <p>
+            Permitting, building access, union considerations, and site realities in the NY metro area
             are part of how we plan every job.
           </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+        <div class="serve-intro">
+          <h2>Built for national programs</h2>
+          <p>
+            We are actively looking to support and grow with national sign programs
+            that need a capable, standards-aware partner in the New York area.
+          </p>
+        </div>
+        <div class="serve">
+          <article>
+            <h3>Program &amp; brand managers</h3>
+            <p>
+              Looking for a local fabricator/installer who respects the brand book
+              and delivers without constant supervision.
+            </p>
+          </article>
+          <article>
+            <h3>National account teams</h3>
+            <p>
+              Need reliable coverage in New York for rollouts, remodels,
+              and ongoing maintenance across multiple locations.
+            </p>
+          </article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Who we serve -->
-  <section class="max-w-5xl mx-auto px-4 sm:px-6 py-20">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl font-bold text-white mb-4">Built for national programs</h2>
-      <p class="text-slate-400 max-w-2xl mx-auto">
-        We are actively looking to support and grow with national sign programs 
-        that need a capable, standards-aware partner in the New York area.
-      </p>
-    </div>
-    <div class="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
-        <h3 class="font-semibold text-white mb-2">Program & brand managers</h3>
-        <p class="text-slate-400 text-sm leading-relaxed">
-          Looking for a local fabricator/installer who respects the brand book 
-          and delivers without constant supervision.
-        </p>
+    <section class="ribbon" aria-label="Types of work">
+      <div class="ribbon-track">
+        <p><span class="item">Retail Storefronts</span><span class="sep">·</span><span class="item">Restaurant &amp; QSR Rollouts</span><span class="sep">·</span><span class="item">Banks &amp; ATMs</span><span class="sep">·</span><span class="item">C-Stores &amp; Fuel</span><span class="sep">·</span><span class="item">Channel Letters</span><span class="sep">·</span><span class="item">Pylons &amp; Monuments</span><span class="sep">·</span><span class="item">Interior &amp; Wayfinding</span><span class="sep">·</span><span class="item">Surveys</span><span class="sep">·</span><span class="item">Service &amp; Maintenance</span></p>
+        <p aria-hidden="true"><span class="item">Retail Storefronts</span><span class="sep">·</span><span class="item">Restaurant &amp; QSR Rollouts</span><span class="sep">·</span><span class="item">Banks &amp; ATMs</span><span class="sep">·</span><span class="item">C-Stores &amp; Fuel</span><span class="sep">·</span><span class="item">Channel Letters</span><span class="sep">·</span><span class="item">Pylons &amp; Monuments</span><span class="sep">·</span><span class="item">Interior &amp; Wayfinding</span><span class="sep">·</span><span class="item">Surveys</span><span class="sep">·</span><span class="item">Service &amp; Maintenance</span></p>
       </div>
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
-        <h3 class="font-semibold text-white mb-2">National account teams</h3>
-        <p class="text-slate-400 text-sm leading-relaxed">
-          Need reliable coverage in New York for rollouts, remodels, 
-          and ongoing maintenance across multiple locations.
-        </p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Types of work -->
-  <section class="work-ribbon" aria-label="Types of work">
-    <div class="work-ribbon-track">
-      <ul>
-        <li><span class="ribbon-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.8V21h14V9.8"/><path d="M10 21v-6h4v6"/></svg></span>Retail Storefronts</li>
-        <li><span class="ribbon-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v7a2 2 0 0 0 2 2v9"/><path d="M8 6h2"/><path d="M16 3c1.8 1.6 2.2 4 .2 6"/><path d="M16.2 9V21"/></svg></span>Restaurant &amp; QSR Rollouts</li>
-        <li><span class="ribbon-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 9h18L12 3z"/><path d="M5 9v9M9.7 9v9M14.3 9v9M19 9v9"/><path d="M3 18h18"/></svg></span>Banks &amp; ATMs</li>
-        <li><span class="ribbon-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="9" height="16" rx="1.5"/><path d="M13 8h2.2A2.8 2.8 0 0 1 18 10.8V16"/><path d="M7 7h3"/><path d="M6 21h6"/></svg></span>C-Stores &amp; Fuel</li>
-        <li><span class="ribbon-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19 9.2 5h1.6L15 19"/><path d="M7.2 13h5.6"/><path d="M17 19V8h3.2"/></svg></span>Channel Letters</li>
-        <li><span class="ribbon-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="3" width="8" height="13" rx="1.2"/><path d="M12 16v3"/><path d="M7 21h10"/></svg></span>Pylons &amp; Monuments</li>
-        <li><span class="ribbon-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s6.5-5.6 6.5-10.2a6.5 6.5 0 1 0-13 0C5.5 15.4 12 21 12 21z"/><circle cx="12" cy="10.5" r="2"/></svg></span>Interior &amp; Wayfinding</li>
-        <li><span class="ribbon-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="12" height="16" rx="2"/><path d="M9 4.5h6V8H9z"/><path d="M9 12h6M9 16h4"/></svg></span>Surveys</li>
-        <li><span class="ribbon-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L4.5 16.2 7.8 19.5l4.8-4.8a4 4 0 0 0 5.1-5.4l-2.5 2.5-2.2-2.2 1.7-3.3z"/></svg></span>Service &amp; Maintenance</li>
-      </ul>
-      <ul aria-hidden="true">
-        <li><span class="ribbon-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.8V21h14V9.8"/><path d="M10 21v-6h4v6"/></svg></span>Retail Storefronts</li>
-        <li><span class="ribbon-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v7a2 2 0 0 0 2 2v9"/><path d="M8 6h2"/><path d="M16 3c1.8 1.6 2.2 4 .2 6"/><path d="M16.2 9V21"/></svg></span>Restaurant &amp; QSR Rollouts</li>
-        <li><span class="ribbon-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 9h18L12 3z"/><path d="M5 9v9M9.7 9v9M14.3 9v9M19 9v9"/><path d="M3 18h18"/></svg></span>Banks &amp; ATMs</li>
-        <li><span class="ribbon-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="9" height="16" rx="1.5"/><path d="M13 8h2.2A2.8 2.8 0 0 1 18 10.8V16"/><path d="M7 7h3"/><path d="M6 21h6"/></svg></span>C-Stores &amp; Fuel</li>
-        <li><span class="ribbon-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19 9.2 5h1.6L15 19"/><path d="M7.2 13h5.6"/><path d="M17 19V8h3.2"/></svg></span>Channel Letters</li>
-        <li><span class="ribbon-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="3" width="8" height="13" rx="1.2"/><path d="M12 16v3"/><path d="M7 21h10"/></svg></span>Pylons &amp; Monuments</li>
-        <li><span class="ribbon-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s6.5-5.6 6.5-10.2a6.5 6.5 0 1 0-13 0C5.5 15.4 12 21 12 21z"/><circle cx="12" cy="10.5" r="2"/></svg></span>Interior &amp; Wayfinding</li>
-        <li><span class="ribbon-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="12" height="16" rx="2"/><path d="M9 4.5h6V8H9z"/><path d="M9 12h6M9 16h4"/></svg></span>Surveys</li>
-        <li><span class="ribbon-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L4.5 16.2 7.8 19.5l4.8-4.8a4 4 0 0 0 5.1-5.4l-2.5 2.5-2.2-2.2 1.7-3.3z"/></svg></span>Service &amp; Maintenance</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="border-t border-slate-800 bg-slate-900/40">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 py-20 text-center">
-      <h2 class="text-3xl font-bold text-white mb-4">Let’s talk</h2>
-      <p class="text-slate-400 mb-8 max-w-xl mx-auto">
-        If you manage a national sign program and need a strong partner in the New York area, 
+    <section class="contact" id="contact">
+      <h2>Let’s talk</h2>
+      <p class="lede">
+        If you manage a national sign program and need a strong partner in the New York area,
         we’d like to hear from you.
       </p>
-      <a href="mailto:hello@gradientsigns.com" 
-         class="inline-flex items-center gap-2 bg-white text-slate-900 font-semibold px-8 py-3.5 rounded-xl hover:bg-slate-100 transition">
-        hello@gradientsigns.com
-      </a>
-      <p class="text-slate-500 text-sm mt-6">
-        New York metro area
-      </p>
-    </div>
-  </section>
+      <a class="mail" href="mailto:hello@gradientsigns.com">hello@gradientsigns.com</a>
+      <p class="fine">New York metro area</p>
+    </section>
+  </main>
 
-  <!-- Footer -->
-  <footer class="border-t border-slate-800 py-8 px-4 sm:px-6">
-    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500">
-      <div class="flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
-        <img src="assets/logo.svg" alt="Gradient Signs" width="1200" height="729" class="block h-auto w-28 sm:w-32" />
-        <div>© 2026 Gradient Signs. All rights reserved.</div>
-      </div>
-      <div>New York Area</div>
-    </div>
+  <footer>
+    <img src="assets/logo.svg" alt="Gradient Signs" width="1200" height="729" />
+    <div>© 2026 Gradient Signs. All rights reserved.</div>
+    <div>New York Area</div>
   </footer>
-
 </body>
 </html>
