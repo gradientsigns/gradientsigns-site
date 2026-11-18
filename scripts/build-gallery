@@ -81,65 +81,41 @@ function galleryMarkup(photos) {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
-    <title>Private gallery — Gradient Signs</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,400&family=Outfit:wght@300;400&display=swap" rel="stylesheet" />
-    <style>
-        :root { color-scheme: dark; }
-        * { box-sizing: border-box; }
-        body {
-            margin: 0;
-            min-height: 100vh;
-            color: #f4f0e8;
-            font-family: Outfit, "Segoe UI", sans-serif;
-            font-weight: 300;
-            background:
-                radial-gradient(880px 420px at 100% -10%, rgba(65, 105, 225, 0.08), transparent 60%),
-                radial-gradient(640px 360px at -10% 30%, rgba(90, 70, 180, 0.06), transparent 55%),
-                #080808;
-        }
-        a { color: inherit; }
-        .wrap { max-width: 1120px; margin: 0 auto; padding: 2.2rem 1.4rem 4.5rem; }
-        header { display: flex; align-items: flex-end; justify-content: space-between; gap: 1.5rem; padding-bottom: 1.6rem; border-bottom: 1px solid rgba(244, 240, 232, 0.14); }
-        .logo { height: 46px; width: auto; }
-        .eyebrow { margin: 0 0 0.35rem; font-size: 0.66rem; letter-spacing: 0.24em; text-transform: uppercase; color: #a39c93; }
-        h1 { margin: 0; font-family: "Cormorant Garamond", Georgia, serif; font-weight: 500; font-size: clamp(2.4rem, 5vw, 3.6rem); letter-spacing: -0.02em; line-height: 0.95; }
-        .lead { margin: 0.7rem 0 0; max-width: 28rem; color: #a39c93; }
-        .back { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; color: #a39c93; }
-        .back:hover { color: #f4f0e8; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 2.4rem 1.25rem; margin-top: 2.4rem; }
-        figure { margin: 0; }
-        button { display: block; width: 100%; padding: 0; border: 0; background: transparent; cursor: zoom-in; }
-        button img { display: block; width: 100%; height: auto; background: #111; }
-        figcaption { margin-top: 0.7rem; font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; color: #a39c93; }
-        dialog { width: min(980px, calc(100vw - 2rem)); padding: 0; border: 0; background: transparent; color: #f4f0e8; }
-        dialog::backdrop { background: rgba(8, 8, 8, 0.9); }
-        dialog img { width: 100%; height: auto; }
-        dialog p { margin: 0.8rem 0 0; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: #d9d3c8; }
-        .close { margin: 0 0 0.7rem auto; display: block; padding: 0; border: 0; background: transparent; color: #f4f0e8; font: inherit; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; }
-        @media (max-width: 700px) {
-            header { flex-direction: column; align-items: flex-start; }
-            .grid { grid-template-columns: 1fr; }
-        }
-    </style>
+    <title>Project Gallery — Gradient Signs</title>
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <meta name="theme-color" content="#080808" />
+    <link rel="stylesheet" href="/assets/site.css" />
 </head>
 <body>
-    <div class="wrap">
-        <header>
-            <div>
-                <a href="../"><img class="logo" src="../assets/logo.svg" alt="Gradient Signs" width="1200" height="729" /></a>
-                <p class="eyebrow">Private</p>
-                <h1>Project Gallery</h1>
-                <p class="lead">Install photos for national accounts and clients.</p>
-            </div>
-            <a class="back" href="../">Back to Gradient Signs</a>
-        </header>
-        <main class="grid">
+    <header class="site-header">
+        <a class="logo-link" href="/"><img src="/assets/logo.svg" alt="Gradient Signs" width="1200" height="729" /></a>
+        <nav class="site-nav" aria-label="Primary">
+            <a href="/">Home</a>
+            <a href="/about.html">About</a>
+            <a href="/request.html">Request Work</a>
+            <a href="/gallery/" aria-current="page">Project Gallery (private)</a>
+            <a href="mailto:Gradientsigns@gmail.com">Contact</a>
+        </nav>
+    </header>
+    <main class="page">
+        <div class="wrap">
+            <p class="eyebrow">Private</p>
+            <h1>Project Gallery</h1>
+            <p class="lede">Install photos for national accounts and clients.</p>
+            <div class="gallery-grid">
 ${figures}
-        </main>
-    </div>
-    <dialog id="lightbox">
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <img src="/assets/logo.svg" alt="" width="1200" height="729" />
+        <div><a href="mailto:Gradientsigns@gmail.com">Gradientsigns@gmail.com</a></div>
+        <div>© 2026 Gradient Signs. All rights reserved.</div>
+        <div>Commack, New York</div>
+    </footer>
+    <dialog id="lightbox" class="lightbox">
         <form method="dialog"><button class="close" type="submit">Close</button></form>
         <img alt="" />
         <p></p>
@@ -148,7 +124,7 @@ ${figures}
         const dialog = document.getElementById("lightbox");
         const dialogImg = dialog.querySelector("img");
         const dialogCaption = dialog.querySelector("p");
-        document.querySelectorAll(".grid button").forEach((button) => {
+        document.querySelectorAll(".gallery-grid button").forEach((button) => {
             button.addEventListener("click", () => {
                 const image = button.querySelector("img");
                 dialogImg.src = image.currentSrc || image.src;
