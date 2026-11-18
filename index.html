@@ -5,143 +5,87 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gradient Signs — National Account Signage Partner | New York</title>
   <meta name="description" content="Gradient Signs partners with national sign programs in the New York area. Consistent branding, reliable execution, and local knowledge for programs like Stratus, Pattison ID, and others." />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              400: '#38bdf8',
-              500: '#0ea5e9',
-              600: '#0284c7',
-              700: '#0369a1',
-            }
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-    body { font-family: 'Inter', system-ui, sans-serif; }
-  </style>
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/assets/favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <link rel="preload" as="image" href="/assets/logo.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#080808" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://gradientsigns.com/" />
+  <meta property="og:title" content="Gradient Signs — National Account Signage Partner | New York" />
+  <meta property="og:description" content="Gradient Signs partners with national sign programs in the New York area. Consistent branding, reliable execution, and local knowledge for programs like Stratus, Pattison ID, and others." />
+  <meta property="og:image" content="https://gradientsigns.com/assets/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Gradient Signs" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Gradient Signs — National Account Signage Partner | New York" />
+  <meta name="twitter:description" content="Gradient Signs partners with national sign programs in the New York area. Consistent branding, reliable execution, and local knowledge for programs like Stratus, Pattison ID, and others." />
+  <meta name="twitter:image" content="https://gradientsigns.com/assets/og.png" />
+  <meta name="twitter:image:alt" content="Gradient Signs" />
+  <link rel="stylesheet" href="/assets/site.css" />
 </head>
-<body class="bg-slate-950 text-slate-100 antialiased">
+<body>
+  <header class="site-header">
+    <a class="logo-link" href="/"><img src="/assets/logo.svg" alt="Gradient Signs" width="1200" height="729" /></a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="/" aria-current="page">Home</a>
+      <a href="/about.html">About</a>
+      <a href="/request.html">Request Work</a>
+      <a href="/gallery/">Project Gallery (private)</a>
+      <a href="mailto:Gradientsigns@gmail.com">Contact</a>
+    </nav>
+  </header>
 
-  <!-- Nav -->
-  <nav class="border-b border-slate-800">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-5 flex items-center justify-between">
-      <div class="text-xl font-bold tracking-tight">
-        GRADIENT <span class="text-brand-500">SIGNS</span>
+  <main>
+    <section class="hero">
+      <!-- Hero background: replace /assets/hero-bg.jpg -->
+      <div class="hero-media" role="img" aria-label="Placeholder for a hero photograph"></div>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="wrap">
+        <p class="eyebrow">Long Island · New York City</p>
+        <h1>A reliable local partner for national sign programs</h1>
+        <p class="lede">Gradient Signs surveys, installs, and services signs for national programs and for clients who hire us directly. Coverage is the New York metro area, including Long Island and New York City.</p>
+        <a class="btn" href="/request.html">Request work</a>
       </div>
-      <a href="#contact" class="text-sm text-slate-400 hover:text-white transition">Contact</a>
-    </div>
-  </nav>
+    </section>
 
-  <!-- Hero -->
-  <section class="max-w-5xl mx-auto px-4 sm:px-6 pt-20 pb-16 text-center">
-    <div class="inline-flex items-center gap-2 bg-slate-900 border border-slate-800 text-brand-400 text-sm font-medium px-4 py-1.5 rounded-full mb-8">
-      New York Area · National Account Ready
-    </div>
-    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight mb-6">
-      A reliable local partner<br class="hidden sm:block" />
-      for national sign programs
-    </h1>
-    <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-      Gradient Signs works with national accounts that need consistent branding, 
-      clean execution, and a team that already understands program standards in the New York market.
-    </p>
-    <a href="#contact" 
-       class="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-500 text-white font-semibold px-8 py-3.5 rounded-xl transition shadow-lg shadow-brand-900/30">
-      Start a Conversation
-    </a>
-  </section>
-
-  <!-- Positioning -->
-  <section class="border-t border-slate-800 bg-slate-900/40">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-20">
-      <div class="grid md:grid-cols-3 gap-10">
-        <div>
-          <div class="text-brand-500 font-semibold text-sm mb-2">STANDARDS</div>
-          <h3 class="text-xl font-bold text-white mb-3">We already speak the language</h3>
-          <p class="text-slate-400 leading-relaxed">
-            National programs have specific brand guidelines, approval flows, and quality expectations. 
-            We work within those systems instead of fighting them.
-          </p>
-        </div>
-        <div>
-          <div class="text-brand-500 font-semibold text-sm mb-2">EXECUTION</div>
-          <h3 class="text-xl font-bold text-white mb-3">Consistent, on-time, on-brand</h3>
-          <p class="text-slate-400 leading-relaxed">
-            From fabrication through install, we focus on clean results that protect the brand 
-            and keep program managers confident.
-          </p>
-        </div>
-        <div>
-          <div class="text-brand-500 font-semibold text-sm mb-2">LOCAL</div>
-          <h3 class="text-xl font-bold text-white mb-3">New York market knowledge</h3>
-          <p class="text-slate-400 leading-relaxed">
-            Permitting, building access, union considerations, and site realities in the NY metro area 
-            are part of how we plan every job.
-          </p>
-        </div>
+    <section class="band">
+      <div class="wrap split">
+        <article>
+          <h2>National programs</h2>
+          <p>Surveys, installs, and service that follow the program’s standards, with photo documentation and clean execution.</p>
+        </article>
+        <article>
+          <h2>Direct clients</h2>
+          <p>The same work for a business that needs a sign surveyed, installed, or maintained in the New York metro area.</p>
+        </article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Who we serve -->
-  <section class="max-w-5xl mx-auto px-4 sm:px-6 py-20">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl font-bold text-white mb-4">Built for national programs</h2>
-      <p class="text-slate-400 max-w-2xl mx-auto">
-        We are actively looking to support and grow with national sign programs 
-        that need a capable, standards-aware partner in the New York area.
-      </p>
-    </div>
-    <div class="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
-        <h3 class="font-semibold text-white mb-2">Program & brand managers</h3>
-        <p class="text-slate-400 text-sm leading-relaxed">
-          Looking for a local fabricator/installer who respects the brand book 
-          and delivers without constant supervision.
-        </p>
+    <section class="ribbon" aria-label="Types of work">
+      <div class="ribbon-track">
+        <p><span class="item">Retail Storefronts</span><span class="sep">·</span><span class="item">Restaurant &amp; QSR Rollouts</span><span class="sep">·</span><span class="item">Banks &amp; ATMs</span><span class="sep">·</span><span class="item">C-Stores &amp; Fuel</span><span class="sep">·</span><span class="item">Channel Letters</span><span class="sep">·</span><span class="item">Pylons &amp; Monuments</span><span class="sep">·</span><span class="item">Interior &amp; Wayfinding</span><span class="sep">·</span><span class="item">Surveys</span><span class="sep">·</span><span class="item">Service &amp; Maintenance</span></p>
+        <p aria-hidden="true"><span class="item">Retail Storefronts</span><span class="sep">·</span><span class="item">Restaurant &amp; QSR Rollouts</span><span class="sep">·</span><span class="item">Banks &amp; ATMs</span><span class="sep">·</span><span class="item">C-Stores &amp; Fuel</span><span class="sep">·</span><span class="item">Channel Letters</span><span class="sep">·</span><span class="item">Pylons &amp; Monuments</span><span class="sep">·</span><span class="item">Interior &amp; Wayfinding</span><span class="sep">·</span><span class="item">Surveys</span><span class="sep">·</span><span class="item">Service &amp; Maintenance</span></p>
       </div>
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
-        <h3 class="font-semibold text-white mb-2">National account teams</h3>
-        <p class="text-slate-400 text-sm leading-relaxed">
-          Need reliable coverage in New York for rollouts, remodels, 
-          and ongoing maintenance across multiple locations.
-        </p>
+    </section>
+
+    <section class="page" id="contact">
+      <div class="wrap">
+        <h2>Request work</h2>
+        <p class="lede">Tell us about the job. We’ll reply at the email you send.</p>
+        <a class="btn" href="/request.html">Request work</a>
+        <p class="hint">Or email <a href="mailto:Gradientsigns@gmail.com">Gradientsigns@gmail.com</a></p>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- Contact -->
-  <section id="contact" class="border-t border-slate-800 bg-slate-900/40">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 py-20 text-center">
-      <h2 class="text-3xl font-bold text-white mb-4">Let’s talk</h2>
-      <p class="text-slate-400 mb-8 max-w-xl mx-auto">
-        If you manage a national sign program and need a strong partner in the New York area, 
-        we’d like to hear from you.
-      </p>
-      <a href="mailto:hello@gradientsigns.com" 
-         class="inline-flex items-center gap-2 bg-white text-slate-900 font-semibold px-8 py-3.5 rounded-xl hover:bg-slate-100 transition">
-        hello@gradientsigns.com
-      </a>
-      <p class="text-slate-500 text-sm mt-6">
-        New York metro area
-      </p>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="border-t border-slate-800 py-8 px-4 sm:px-6">
-    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500">
-      <div>© 2026 Gradient Signs. All rights reserved.</div>
-      <div>New York Area</div>
-    </div>
+  <footer class="site-footer">
+    <img src="/assets/logo.svg" alt="" width="1200" height="729" />
+    <div><a href="mailto:Gradientsigns@gmail.com">Gradientsigns@gmail.com</a></div>
+    <div>© 2026 Gradient Signs. All rights reserved.</div>
+    <div>Commack, New York</div>
   </footer>
-
 </body>
 </html>

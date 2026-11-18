@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Request Work — Gradient Signs</title>
+  <meta name="description" content="Send Gradient Signs a work request for a survey, install, repair, new sign, or removal in the New York metro area." />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <meta name="theme-color" content="#080808" />
+  <link rel="stylesheet" href="/assets/site.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo-link" href="/"><img src="/assets/logo.svg" alt="Gradient Signs" width="1200" height="729" /></a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/about.html">About</a>
+      <a href="/request.html" aria-current="page">Request Work</a>
+      <a href="/gallery/">Project Gallery (private)</a>
+      <a href="mailto:Gradientsigns@gmail.com">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <div class="wrap">
+      <p class="eyebrow">Request work</p>
+      <h1>Tell us about the job</h1>
+      <p class="lede">Name, site, and what you need is enough to start. Store number, PO, permit status, due date, and a drawings link are optional.</p>
+
+      <!-- FORM_EMBED_URL: paste the Google Form embed URL into the constant below.
+           Example: https://docs.google.com/forms/d/e/FORM_ID/viewform?embedded=true -->
+      <div class="form-embed">
+        <iframe id="form-embed" title="Work request form" hidden></iframe>
+        <p class="form-embed-note" id="form-embed-note">The request form will appear here once the Google Form link is added.</p>
+      </div>
+
+      <p><a class="btn" id="email-request" href="mailto:Gradientsigns@gmail.com">Email your request</a></p>
+      <p class="hint">The email opens with the fields listed, including store or site number, PO, permit status, due date, and drawings link.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <img src="/assets/logo.svg" alt="" width="1200" height="729" />
+    <div><a href="mailto:Gradientsigns@gmail.com">Gradientsigns@gmail.com</a></div>
+    <div>© 2026 Gradient Signs. All rights reserved.</div>
+    <div>Commack, New York</div>
+  </footer>
+
+  <script>
+    // FORM_EMBED_URL — replace the empty string with the Google Form embed URL.
+    const FORM_EMBED_URL = "";
+
+    const frame = document.getElementById("form-embed");
+    const note = document.getElementById("form-embed-note");
+    if (FORM_EMBED_URL) {
+      frame.src = FORM_EMBED_URL;
+      frame.hidden = false;
+      note.hidden = true;
+    }
+
+    const subject = "Work request — Gradient Signs";
+    const body = [
+      "Name:",
+      "Company:",
+      "Email:",
+      "Phone:",
+      "Site address:",
+      "What do you need:",
+      "Description:",
+      "Timeline:",
+      "Photos or drawings link:",
+      "Store or site number:",
+      "PO or reference number:",
+      "Permit status:",
+      "Due date:",
+      "Drawings link:"
+    ].join("\n");
+    document.getElementById("email-request").href =
+      "mailto:Gradientsigns@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+  </script>
+</body>
+</html>
