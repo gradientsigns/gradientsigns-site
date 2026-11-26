@@ -86,11 +86,28 @@ function galleryMarkup(photos) {
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
     <meta name="theme-color" content="#080808" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("gs-theme");
+          if (t !== "light" && t !== "dark") {
+            t = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+          }
+          document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      })();
+    </script>
     <link rel="stylesheet" href="/assets/site.css" />
+    <script src="/assets/theme.js" defer></script>
 </head>
 <body>
     <header class="site-header">
-        <a class="logo-link" href="/"><img src="/assets/logo-purple.svg" alt="Gradient Signs" width="1200" height="729" /></a>
+        <a class="logo-link" href="/">
+            <img class="logo logo-white" src="/assets/logo.png" alt="Gradient Signs" width="1216" height="645" />
+            <img class="logo logo-blue" src="/assets/logo-dark.png" alt="" width="1216" height="645" />
+        </a>
         <nav class="site-nav" aria-label="Primary">
             <a href="/">Home</a>
             <a href="/about.html">About</a>
@@ -98,6 +115,15 @@ function galleryMarkup(photos) {
             <a href="/gallery/" aria-current="page">Project Gallery (private)</a>
             <a href="mailto:Gradientsigns@gmail.com">Contact</a>
         </nav>
+        <button type="button" class="theme-toggle" aria-label="Switch theme">
+            <svg class="icon-sun" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3.6" />
+                <path d="M12 3.2v1.6M12 19.2v1.6M4.9 4.9l1.1 1.1M18 18l1.1 1.1M3.2 12h1.6M19.2 12h1.6M4.9 19.1l1.1-1.1M18 6l1.1-1.1" />
+            </svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19.5 13.5A7.2 7.2 0 1 1 10.5 4.5 5.8 5.8 0 0 0 19.5 13.5z" />
+            </svg>
+        </button>
     </header>
     <main class="page">
         <div class="wrap">
@@ -110,7 +136,8 @@ ${figures}
         </div>
     </main>
     <footer class="site-footer">
-        <img src="/assets/logo-purple.svg" alt="" width="1200" height="729" />
+        <img class="logo logo-white" src="/assets/logo.png" alt="" width="1216" height="645" />
+        <img class="logo logo-blue" src="/assets/logo-dark.png" alt="" width="1216" height="645" />
         <div><a href="mailto:Gradientsigns@gmail.com">Gradientsigns@gmail.com</a></div>
         <div>© 2026 Gradient Signs. All rights reserved.</div>
         <div>Commack, New York</div>
