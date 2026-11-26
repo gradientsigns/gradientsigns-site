@@ -461,8 +461,6 @@ dialog.lightbox .close {
 }
 .logo-blue { display: none; }
 .logo-white { display: block; }
-[data-theme="light"] .site-footer .logo-white { display: none; }
-[data-theme="light"] .site-footer .logo-blue { display: block; }
 
 .theme-toggle {
   display: inline-flex;
@@ -536,22 +534,22 @@ dialog.lightbox .close {
 [data-theme="light"] .theme-toggle:focus-visible { outline-color: #fff; }
 
 [data-theme="light"] .site-footer {
-  background: #fff;
-  border-top: 1px solid var(--line);
-  color: var(--muted);
+  background: #7851A9;
+  border-top: none;
+  color: #fff;
 }
 [data-theme="light"] .lede a,
 [data-theme="light"] .hint a,
 [data-theme="light"] .prose a,
-[data-theme="light"] .note a,
-[data-theme="light"] .site-footer a {
+[data-theme="light"] .note a {
   color: var(--blue-ink);
 }
 [data-theme="light"] .lede a:hover,
 [data-theme="light"] .hint a:hover,
 [data-theme="light"] .prose a:hover,
-[data-theme="light"] .note a:hover,
-[data-theme="light"] .site-footer a:hover { color: #7851A9; }
+[data-theme="light"] .note a:hover { color: #7851A9; }
+[data-theme="light"] .site-footer a { color: #fff; }
+[data-theme="light"] .site-footer a:hover { color: #fff; opacity: 0.85; }
 
 [data-theme="light"] .eyebrow { color: #7851A9; }
 
@@ -572,17 +570,36 @@ dialog.lightbox .close {
 }
 [data-theme="light"] h3 { letter-spacing: 0.06em; }
 
-/* Hero stays a dark photo panel under the purple bar */
+/* Light hero: faint photo under a pale wash, dark ink type */
+[data-theme="light"] .hero {
+  background: #F7F4FB;
+}
+[data-theme="light"] .hero-media {
+  background-color: #F7F4FB;
+  opacity: 0.22;
+}
+[data-theme="light"] .hero-shade {
+  background: linear-gradient(
+    180deg,
+    rgba(247, 244, 251, 0.82) 0%,
+    rgba(247, 244, 251, 0.92) 55%,
+    rgba(247, 244, 251, 0.97) 100%
+  );
+}
 [data-theme="light"] .hero h1 {
   text-transform: none;
   letter-spacing: -0.01em;
-  color: #f4f0e8;
+  color: #1a1a1a;
   background: none;
   border-left: 0;
   padding: 0;
 }
-[data-theme="light"] .hero .eyebrow { color: #c4a8e8; }
-[data-theme="light"] .hero .lede { color: rgba(244, 240, 232, 0.88); }
+[data-theme="light"] .hero .eyebrow { color: #7851A9; }
+[data-theme="light"] .hero .lede { color: #4a5560; }
+
+[data-theme="light"] #contact {
+  border-top: 2px solid #7851A9;
+}
 
 [data-theme="light"] .band,
 [data-theme="light"] .service-area,
