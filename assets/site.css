@@ -225,40 +225,61 @@ button.btn:hover { background: var(--purple-hover); color: #fff; }
 }
 
 .area-map {
+  --map-water: #10141c;
+  --map-land: #1c2128;
+  --map-line: #8b949e;
+  --map-core: #9b6fd4;
+  --map-core-line: #d4c4f0;
+  --map-ring5: #8eaaee;
+  --map-ring5-fill: rgba(65, 105, 225, 0.16);
+  --map-ring3: #c4a8e8;
+  --map-ring3-fill: rgba(155, 111, 212, 0.22);
+  --map-marker: #f4f0e8;
+  --map-halo: #10141c;
+  --map-ink: #f4f0e8;
+  --map-state: #b7b1a8;
+  --map-ring-label: #8eaaee;
   margin: 1.25rem 0 1.1rem;
   padding: 0;
-  background: #10141c;
+  background: var(--map-water);
   border: 1px solid rgba(244, 240, 232, 0.14);
 }
-.area-map img,
+[data-theme="light"] .area-map {
+  --map-water: #d4e3ec;
+  --map-land: #f8f6f3;
+  --map-line: #6e787f;
+  --map-core: #7851A9;
+  --map-core-line: #5c3488;
+  --map-ring5: #4169E1;
+  --map-ring5-fill: rgba(65, 105, 225, 0.10);
+  --map-ring3: #7851A9;
+  --map-ring3-fill: rgba(120, 81, 169, 0.16);
+  --map-marker: #7851A9;
+  --map-halo: #ffffff;
+  --map-ink: #1c1c1c;
+  --map-state: #5c6570;
+  --map-ring-label: #7851A9;
+}
 .area-map svg {
   display: block;
   width: 100%;
   height: auto;
   max-width: 100%;
+  aspect-ratio: 1 / 1;
 }
-.area-map svg { aspect-ratio: 1 / 1; }
-.area-map .map-light { display: none; }
-[data-theme="light"] .area-map { background: #d4e3ec; }
-[data-theme="light"] .area-map .map-dark { display: none; }
-[data-theme="light"] .area-map .map-light { display: block; }
 .area-map .map-labels text,
 .area-map .scale-label {
   font-family: Outfit, "Segoe UI", sans-serif;
   text-anchor: middle;
-  fill: #1c1c1c;
-  stroke: #fff;
+  fill: var(--map-ink);
+  stroke: var(--map-halo);
   stroke-width: 3px;
   paint-order: stroke;
   font-size: 8px;
   font-weight: 500;
 }
-.area-map .map-labels .state { font-size: 7px; letter-spacing: 0.12em; fill: #5c6570; }
-.area-map .map-labels .ring { font-size: 7.4px; fill: #7851A9; }
-.area-map .map-dark .map-labels text,
-.area-map .map-dark .scale-label { fill: #f4f0e8; stroke: #10141c; }
-.area-map .map-dark .map-labels .state { fill: #b7b1a8; }
-.area-map .map-dark .map-labels .ring { fill: #8eaaee; }
+.area-map .map-labels .state { font-size: 7px; letter-spacing: 0.12em; fill: var(--map-state); }
+.area-map .map-labels .ring { font-size: 7.4px; fill: var(--map-ring-label); }
 .area-map .scale-label { font-size: 7px; text-anchor: start; }
 .area-caption {
   margin: 0;
