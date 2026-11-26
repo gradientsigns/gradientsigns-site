@@ -275,6 +275,55 @@ p { margin: 0 0 1rem; }
   vertical-align: 0.05em;
 }
 
+.area-map .map-labels .city { font-size: 12px; letter-spacing: 0.04em; fill: var(--ink); }
+.area-map .map-labels .state { font-size: 11px; letter-spacing: 0.16em; fill: var(--muted); }
+
+.area-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1.25rem;
+  margin: 0.35rem 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.area-legend li { display: flex; align-items: center; gap: 0.45rem; }
+.swatch { width: 0.72rem; height: 0.72rem; flex: none; }
+.swatch.core { background: #6d28d9; }
+.swatch.regular { background: rgba(124, 58, 237, 0.72); }
+.swatch.outer { background: rgba(43, 89, 240, 0.55); }
+
+.coverage-sheet {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1rem 1.5rem;
+  margin: 0.3rem 0 0.4rem;
+}
+.coverage-sheet div { margin: 0; padding-top: 0.75rem; border-top: 1px solid var(--line); }
+.coverage-sheet dt {
+  margin: 0 0 0.3rem;
+  color: var(--purple-ink);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.coverage-sheet dd { margin: 0; color: var(--ink); font-size: 1rem; }
+
+.coverage-work {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
+  gap: 0.75rem 1.25rem;
+  margin: 0.35rem 0 1.1rem;
+  padding: 0.85rem 0 0;
+  border-top: 1px solid var(--line);
+  list-style: none;
+}
+.coverage-work li { margin: 0; color: var(--muted); font-size: 0.92rem; line-height: 1.45; }
+
+.area-note { margin: 0 0 0.9rem; color: var(--muted); font-size: 0.88rem; }
+
 .prose { max-width: 40rem; }
 .prose h2 { margin-top: 2.4rem; }
 .note { color: var(--muted); }
