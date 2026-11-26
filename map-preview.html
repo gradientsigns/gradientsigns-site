@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("gs-theme");
+        if (t !== "light" && t !== "dark") {
+          t = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    })();
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coverage map preview — Gradient Signs</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="stylesheet" href="/assets/site.css?v=20261126c" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha384-c6Rcwz4e4CITMbu/NBmnNS8yN2sC3cUElMEMfP3vqqKFp7GOYaaBBCqmaWBjmkjb" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.css" integrity="sha384-K282sW/zFjTkrjR/+yr1H+gCukuy4OEYrkXRybV88g7pk+kZZYpNV6SAV59NcgFg" crossorigin="anonymous" />
+  <script src="/assets/theme.js" defer></script>
+  <style>
+    .preview-kicker { margin: 0 0 0.8rem; color: var(--muted); font-size: 0.88rem; }
+    .coverage-map {
+      width: 100%;
+      aspect-ratio: 16 / 7;
+      max-height: 520px;
+      background: var(--map-water, #10141c);
+      border: 1px solid rgba(244, 240, 232, 0.14);
+    }
+    [data-theme="light"] .coverage-map { background: #d4e3ec; }
+    .leaflet-container { font-family: Outfit, "Segoe UI", sans-serif; background: transparent; }
+    .coverage-map img { max-width: none !important; max-height: none !important; }
+    .leaflet-control-attribution {
+      font-size: 10px;
+      background: rgba(8, 8, 8, 0.72) !important;
+      color: #d9d3c8 !important;
+    }
+    .leaflet-control-attribution a { color: #c4a8e8 !important; }
+    [data-theme="light"] .leaflet-control-attribution {
+      background: rgba(255, 255, 255, 0.88) !important;
+      color: #3d4650 !important;
+    }
+    [data-theme="light"] .leaflet-control-attribution a { color: #5c3488 !important; }
+    .leaflet-bar a {
+      background: #16161a;
+      color: #f4f0e8;
+      border-bottom-color: rgba(244, 240, 232, 0.16);
+    }
+    [data-theme="light"] .leaflet-bar a { background: #fff; color: #1c1c1c; }
+    .map-legend {
+      position: relative;
+      z-index: 500;
+      margin: 10px 10px 0 0;
+      padding: 0.45rem 0.6rem;
+      list-style: none;
+      background: rgba(8, 8, 8, 0.82);
+      color: #f4f0e8;
+      font-size: 0.75rem;
+      line-height: 1.45;
+    }
+    [data-theme="light"] .map-legend { background: rgba(255, 255, 255, 0.92); color: #1c1c1c; }
+    .map-legend li { display: flex; align-items: center; gap: 0.4rem; }
+    .map-legend i { width: 0.7rem; height: 0.7rem; flex: none; }
+    .key-core { background: #9b6fd4; }
+    [data-theme="light"] .key-core { background: #7851A9; }
+    .key-3 { background: transparent; border: 1.5px dashed #c4a8e8; }
+    [data-theme="light"] .key-3 { border-color: #7851A9; }
+    .key-5 { background: transparent; border: 1.5px solid #8eaaee; }
+    [data-theme="light"] .key-5 { border-color: #4169E1; }
+    @media (max-width: 760px) {
+      .coverage-map { aspect-ratio: 4 / 3; max-height: none; }
+      .map-legend { font-size: 0.68rem; bottom: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo-link" href="/"><img class="logo logo-white" src="/assets/logo.png" alt="Gradient Signs" width="1216" height="645" />
+      <img class="logo logo-blue" src="/assets/logo-dark.png" alt="" width="1216" height="645" /></a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/about.html">About</a>
+      <a href="/request.html">Request Work</a>
+      <a href="/gallery/">Project Gallery (private)</a>
+      <a href="mailto:Gradientsigns@gmail.com">Contact</a>
+    </nav>
+    <button type="button" class="theme-toggle" aria-label="Switch theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3.6" />
+        <path d="M12 3.2v1.6M12 19.2v1.6M4.9 4.9l1.1 1.1M18 18l1.1 1.1M3.2 12h1.6M19.2 12h1.6M4.9 19.1l1.1-1.1M18 6l1.1-1.1" />
+      </svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19.5 13.5A7.2 7.2 0 1 1 10.5 4.5 5.8 5.8 0 0 0 19.5 13.5z" />
+      </svg>
+    </button>
+  </header>
+  <main>
+    <section class="service-area" aria-labelledby="map-preview-title">
+      <div class="wrap">
+        <p class="eyebrow">Preview</p>
+        <h2 id="map-preview-title">Coverage map</h2>
+        <p class="lede">A closer look at the service area. This page is a preview and is not the home page.</p>
+        <p class="preview-kicker">Click the map to zoom with the scroll wheel. Pinch works on a phone.</p>
+        <div id="coverage-map" class="coverage-map" role="region" aria-label="Interactive coverage map">
+          <ul class="map-legend" aria-label="Map legend">
+            <li><i class="key-core"></i> Long Island and New York City</li>
+            <li><i class="key-3"></i> About 3 hours</li>
+            <li><i class="key-5"></i> About 5 hours</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" integrity="sha384-NElt3Op+9NBMCYaef5HxeJmU4Xeard/Lku8ek6hoPTvYkQPh3zLIrJP7KiRocsxO" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.js" integrity="sha384-KKgyz2mG25bKJ1O2PyqTJPlAF8Kw2BpDmsLTNBXslICOBvhTAyF5F0XhLWF2ZovY" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@maplibre/maplibre-gl-leaflet@0.0.22/leaflet-maplibre-gl.js" integrity="sha384-4CB9Vtol9LN6lGgBCvmPLbUEZwilrqIvPieSRurgAXAB7FVJaLS9n8WyAIA5wjQ+" crossorigin="anonymous"></script>
+  <script>
+    (function () {
+      var ORIGIN = [40.76164, -73.44052];
+      var COMMACK = [40.84347, -73.28332];
+      var RADIUS_3_M = 114.6 * 1609.344;
+      var RADIUS_5_M = 208.2 * 1609.344;
+      var ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://openfreemap.org">OpenFreeMap</a>';
+      var frame = document.getElementById("coverage-map");
+
+      var map = L.map(frame, {
+        scrollWheelZoom: false,
+        zoomControl: true,
+        attributionControl: true,
+        minZoom: 5,
+        maxZoom: 16
+      });
+      var base = null;
+      var moved = false;
+
+      function theme() {
+        return document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
+      }
+
+      function styleUrl(name) {
+        return name === "light"
+          ? "https://tiles.openfreemap.org/styles/positron"
+          : "https://tiles.openfreemap.org/styles/dark";
+      }
+
+      function useTiles(name) {
+        if (!base) {
+          base = L.maplibreGL({ style: styleUrl(name) }).addTo(map);
+          return;
+        }
+        var inner = base.getMaplibreMap();
+        if (inner) inner.setStyle(styleUrl(name));
+      }
+
+      function fitThreeHour() {
+        var width = map.getSize().x;
+        if (!width) return;
+        var lat = ORIGIN[0] * Math.PI / 180;
+        var diameter = RADIUS_3_M * 2;
+        var zoom = Math.log2((156543.03392 * Math.cos(lat) * (width * 0.94)) / diameter);
+        map.setView(ORIGIN, zoom, { animate: false });
+      }
+
+      map.attributionControl.setPrefix("");
+      map.attributionControl.addAttribution(ATTR);
+      useTiles(theme());
+      var purple = "#7851A9";
+      var blue = "#4169E1";
+      L.circle(ORIGIN, {
+        radius: RADIUS_5_M,
+        color: blue,
+        weight: 2,
+        fillColor: blue,
+        fillOpacity: 0.08
+      }).addTo(map);
+      L.circle(ORIGIN, {
+        radius: RADIUS_3_M,
+        color: purple,
+        weight: 2,
+        dashArray: "7 5",
+        fillColor: purple,
+        fillOpacity: 0.12
+      }).addTo(map);
+
+      fetch("/assets/coverage-counties.json")
+        .then(function (response) { return response.json(); })
+        .then(function (data) {
+          L.geoJSON(data, {
+            style: {
+              color: purple,
+              weight: 1.25,
+              fillColor: purple,
+              fillOpacity: 0.45
+            }
+          }).addTo(map);
+          L.circleMarker(COMMACK, {
+            radius: 6,
+            color: "#ffffff",
+            weight: 2,
+            fillColor: purple,
+            fillOpacity: 1
+          }).addTo(map).bindTooltip("Commack, home base", { direction: "top", offset: [0, -6] });
+        });
+
+      function settle() {
+        map.invalidateSize();
+        if (!moved) fitThreeHour();
+        var legend = frame.querySelector(".map-legend");
+        var corner = frame.querySelector(".leaflet-top.leaflet-right");
+        if (legend && corner && legend.parentNode !== corner) corner.appendChild(legend);
+      }
+      map.whenReady(settle);
+      window.addEventListener("load", settle);
+      map.on("click", function () { map.scrollWheelZoom.enable(); });
+      map.on("dragstart", function () { moved = true; });
+      map.on("zoomstart", function (event) { if (event.originalEvent) moved = true; });
+      window.addEventListener("resize", function () {
+        map.invalidateSize();
+        if (!moved) fitThreeHour();
+      });
+      new MutationObserver(function () { useTiles(theme()); }).observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ["data-theme"]
+      });
+    })();
+  </script>
+</body>
+</html>
