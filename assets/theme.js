@@ -14,7 +14,7 @@
       btn.setAttribute("title", "Switch to " + next + " theme");
     });
     document.querySelectorAll('meta[name="theme-color"]').forEach(function (meta) {
-      meta.setAttribute("content", theme === "light" ? "#7851A9" : "#080808");
+      meta.setAttribute("content", "#0B0B0F");
     });
   }
 
