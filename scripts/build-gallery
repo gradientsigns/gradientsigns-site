@@ -90,7 +90,7 @@ function galleryMarkup(photos) {
 </head>
 <body>
     <header class="site-header">
-        <a class="logo-link" href="/"><img src="/assets/logo.svg" alt="Gradient Signs" width="1200" height="729" /></a>
+        <a class="logo-link" href="/"><img src="/assets/logo-purple.svg" alt="Gradient Signs" width="1200" height="729" /></a>
         <nav class="site-nav" aria-label="Primary">
             <a href="/">Home</a>
             <a href="/about.html">About</a>
@@ -110,7 +110,7 @@ ${figures}
         </div>
     </main>
     <footer class="site-footer">
-        <img src="/assets/logo.svg" alt="" width="1200" height="729" />
+        <img src="/assets/logo-purple.svg" alt="" width="1200" height="729" />
         <div><a href="mailto:Gradientsigns@gmail.com">Gradientsigns@gmail.com</a></div>
         <div>© 2026 Gradient Signs. All rights reserved.</div>
         <div>Commack, New York</div>
@@ -223,7 +223,7 @@ function main() {
                 "--template-error",
                 "Wrong password. Try again.",
                 "--template-color-primary",
-                "#4169E1",
+                "#6D28D9",
                 "--template-color-secondary",
                 "#080808",
                 "--remember",
